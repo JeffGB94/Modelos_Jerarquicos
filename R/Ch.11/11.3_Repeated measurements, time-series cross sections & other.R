@@ -6,7 +6,7 @@ library(dplyr)
 library(magrittr)
 library(ggplot2)
 
-datos <- read.table(file="Datos/smoking/smoke_pub.dat", header=TRUE, sep="\t")
+datos <- read.table(file="Libro/ARM_Data/smoking/smoke_pub.dat", header=TRUE, sep="\t")
 head(datos)
 
 # Vamos a modificar el nombre de las variables
@@ -77,8 +77,8 @@ bprior1 <- prior(student_t(5, 0, 10), class = b) +
   prior(cauchy(0, 2), class = sd)
 
 mod3 <- brm(y ~ 1 + parents_smoke + female + wave + (1 | id), 
-            data=datos, 
-            family=bernoulli(link = "logit"),
-            prior=bprior1)
+            data = datos, 
+            family = bernoulli(link = "logit"),
+            prior = bprior1)
 
 
